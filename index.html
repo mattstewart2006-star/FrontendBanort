@@ -263,7 +263,7 @@ async function startRecording() {
 
         mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-            await udioToServer(audioBlob);
+            await SendAudioToServer(audioBlob);
         };
 
         mediaRecorder.start();
