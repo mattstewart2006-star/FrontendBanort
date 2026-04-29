@@ -235,7 +235,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 // ====== CONFIGURACIÓN ======
 // Asegúrate de que el backend esté corriendo en este puerto
-const API_URL = "https://ErrorMatt.pythonanywhere.com/agent/chat-voice-to-voice";
+const API_URL = "http://127.0.0.1:8000/agent/chat-voice-to-voice";
 const SESSION_ID = "session_" + Math.random().toString(36).substring(7); // ID de sesión único por pestaña
 
 // ====== ELEMENTOS DEL DOM ======
@@ -263,7 +263,7 @@ async function startRecording() {
 
         mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-            await sendAudioToServer(audioBlob);
+            await udioToServer(audioBlob);
         };
 
         mediaRecorder.start();
@@ -287,7 +287,7 @@ function stopRecording() {
 }
 
 // ====== COMUNICACIÓN CON EL BACKEND (FastAPI) ======
-async function sendAudioToServer(blob) {
+async function SendAudioToServer(blob) {
     const formData = new FormData();
     formData.append("session_id", SESSION_ID);
     // El backend espera un archivo en el campo 'file'
